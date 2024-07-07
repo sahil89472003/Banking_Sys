@@ -1,0 +1,24 @@
+Table Name:- banking 
+
+CREATE TABLE [dbo].[banking] (
+    [Id]    INT          IDENTITY (1, 1) NOT NULL,
+    [fname] VARCHAR (50) NOT NULL,
+    [email] VARCHAR (50) NOT NULL,
+    [pass]  VARCHAR (10) NOT NULL,
+    [b_acc] VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Id] ASC),
+    UNIQUE NONCLUSTERED ([b_acc] ASC)
+);
+
+
+Table Name:- Transaction
+
+CREATE TABLE [dbo].[Transaction] (
+    [Trans_Id] INT          IDENTITY (1, 1) NOT NULL,
+    [Message]  VARCHAR (50) NULL,
+    [amount]   INT          NOT NULL,
+    [b_acc]    VARCHAR (50) NOT NULL,
+    PRIMARY KEY CLUSTERED ([Trans_Id] ASC),
+    CONSTRAINT [FK_Transaction_Tobanking] FOREIGN KEY ([b_acc]) REFERENCES [dbo].[banking] ([b_acc])
+);
+
